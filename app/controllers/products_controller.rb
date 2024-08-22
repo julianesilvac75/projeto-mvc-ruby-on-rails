@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_products, only: [ :show, :edit, :update ]
+  before_action :set_products, only: [ :show, :edit, :update, :destroy ]
   def index
     @products = Product.all
   end
@@ -17,8 +17,6 @@ class ProductsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
-    eu venho da partial
   end
 
   def edit; end
@@ -28,6 +26,14 @@ class ProductsController < ApplicationController
       redirect_to products_url(@product)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to products_url
+    else
+      redirect_to @product
     end
   end
 

@@ -8,4 +8,5 @@
 
 <%= link_to "Ver produto", product %>
 <%= link_to "Editar produto", edit_product_path(product) %>
+<%= button_to "Deletar", product, method: :delete, form: { data: { turbo_confirm: "Você quer deletar este produto?" } }  %>
 <% end %>
